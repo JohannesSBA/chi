@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Platform, StyleSheet, View } from "react-native";
+import { Alert, Platform, StyleSheet, View, Text } from "react-native";
 import { supabase } from "../lib/supabase";
 import { Button, Input } from "@rneui/themed";
 import * as AppleAuthentication from "expo-apple-authentication";
@@ -43,20 +43,28 @@ export default function Auth() {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.verticallySpaced, styles.mt20]}>
-        <Input
-          label="Email"
-          leftIcon={{ type: "font-awesome", name: "envelope" }}
-          onChangeText={(text) => setEmail(text)}
-          value={email}
-          placeholder="email@address.com"
-          autoCapitalize={"none"}
-        />
-      </View>
+      <Text
+        style={{
+          width: "100%",
+          fontSize: 36,
+          textAlign: "center",
+          marginBottom: 30,
+        }}
+      >
+        Welcome To Chi!
+      </Text>
+      <Input
+        label="Email"
+        style={styles.input}
+        onChangeText={(text) => setEmail(text)}
+        value={email}
+        placeholder="email@address.com"
+        autoCapitalize={"none"}
+      />
       <View style={styles.verticallySpaced}>
         <Input
           label="Password"
-          leftIcon={{ type: "font-awesome", name: "lock" }}
+          style={styles.input}
           onChangeText={(text) => setPassword(text)}
           value={password}
           secureTextEntry={true}
@@ -156,9 +164,82 @@ export default function Auth() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
-    padding: 12,
+    marginHorizontal: 15,
+    alignItems: "center",
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 20,
+    marginTop: 230,
   },
+  heading: {
+    fontSize: 36,
+    fontFamily: "PlusJakartaSans-ExtraBold",
+    color: "black",
+    marginBottom: 20,
+    backgroundColor: "white",
+    justifyContent: "flex-start",
+    width: "100%",
+  },
+
+  input: {
+    height: 50,
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#DDD",
+    paddingHorizontal: 15,
+    marginBottom: 15,
+    fontSize: 16,
+    width: "100%",
+    // Adding subtle shadow (iOS)
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    // Elevation for Android shadow
+    elevation: 3,
+    borderRadius: 10,
+    position: "relative",
+  },
+  passInput: {
+    height: 50,
+    marginBottom: 15,
+    fontSize: 16,
+    width: "100%",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 3,
+    borderRadius: 10,
+    position: "relative",
+  },
+
+  iconContainer: {
+    position: "absolute",
+    right: 15,
+  },
+  icon: {
+    marginTop: 10,
+  },
+  btn: {
+    backgroundColor: "#3C82F6",
+    borderColor: "#4B5563",
+    marginVertical: 20,
+    paddingVertical: 10,
+    justifyContent: "center",
+    shadowColor: "#D1D5DB",
+    alignItems: "center",
+    marginTop: 20,
+    borderRadius: 9999,
+    width: "100%",
+    boxShadow: "0px 6px 6px rgb(82, 135, 241)",
+  },
+  btnTxt: {
+    fontSize: 16,
+    fontFamily: "PlusJakartaSans-SemiBold",
+    color: "white",
+  },
+
   verticallySpaced: {
     paddingTop: 4,
     paddingBottom: 4,
